@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Quantum Research Technologies — where academia meets the quantum industry." />
   <title>Quantum Research Technologies</title>
-  <link rel="icon" href="assets/qrt-logo.jpeg" />
+  <link rel="icon" href="qrt-logo.jpeg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header" id="top">
     <nav class="navbar" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Quantum Research Technologies home">
-        <img src="assets/qrt-logo.jpeg" alt="Quantum Research Technologies logo" />
+        <img src="qrt-logo.jpeg" alt="Quantum Research Technologies logo" />
         <span>
           <strong>QRT</strong>
           <small>Quantum Research Technologies</small>
@@ -24,9 +24,9 @@
       </button>
 
       <div class="nav-links">
-        <a href="#directory">Directory</a>
-        <a href="#board">Board</a>
         <a href="#news">News</a>
+        <a href="#board">Board</a>
+        <a href="#directory">Directory</a>
         <a href="#join" class="nav-cta">Join</a>
       </div>
     </nav>
@@ -38,17 +38,17 @@
         <p class="eyebrow">Quantum Research Technologies</p>
         <h1>Where academia meets the quantum industry.</h1>
         <p class="hero-text">
-          QRT connects students, researchers, engineers, founders, and companies working across quantum science and emerging quantum technologies.
+          QRT connects students, researchers, engineers, founders, laboratories, startups, and companies working across quantum science and emerging quantum technologies.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://chat.whatsapp.com/DOwIi2uaRBGJnSZOlb8h3z?mode=gi_t" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
+          <a class="btn btn-primary" href="https://web.whatsapp.com/accept?code=DOwIi2uaRBGJnSZOlb8h3z" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
           <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJVQNXhUHe6TXw4nT_h5p1hFv95x8g02ppAAZJHT6TnBt4g/viewform?usp=sharing&ouid=116323556988947068439" target="_blank" rel="noopener noreferrer">Be added to the directory</a>
         </div>
       </div>
 
       <div class="hero-card reveal" aria-label="QRT visual identity card">
         <div class="logo-orbit">
-          <img src="assets/qrt-logo.jpeg" alt="QRT logo" />
+          <img src="qrt-logo.jpeg" alt="QRT logo" />
         </div>
         <div class="hero-card-copy">
           <span>Research · Industry · Community</span>
@@ -76,7 +76,7 @@
       <article class="pillar-card reveal">
         <span class="card-number">02</span>
         <h3>Share</h3>
-        <p>Publish news, events, talks, internships, PhD opportunities, and industry updates relevant to the community.</p>
+        <p>Publish community news, scientific events, talks, calls for participation, and collaboration updates.</p>
       </article>
       <article class="pillar-card reveal">
         <span class="card-number">03</span>
@@ -85,25 +85,62 @@
       </article>
     </section>
 
+    <section id="news" class="news section-shell reveal">
+      <div class="section-heading">
+        <p class="eyebrow">News</p>
+        <h2>Updates from the QRT community.</h2>
+        <p>
+          Use this section for announcements, upcoming events, partnerships, community milestones, and short quantum-technology news items.
+        </p>
+      </div>
+
+      <div class="news-grid" id="newsGrid"></div>
+    </section>
+
+    <section id="board" class="board section-shell reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Board</p>
+        <h2>Meet the team building QRT.</h2>
+        <p>
+          QRT was initiated after the Quantum Computing Hackathon with the City of London Corporation and IBM, by three co-founders who wanted to create a practical bridge between academic quantum research and the emerging quantum industry.
+        </p>
+      </div>
+
+      <div class="history-card">
+        <div>
+          <p class="eyebrow">History</p>
+          <h3>From a hackathon momentum to a quantum community.</h3>
+        </div>
+        <p>
+          The idea behind Quantum Research Technologies was born from the energy of the Quantum Computing Hackathon, where students, researchers, and industry actors worked around concrete quantum challenges. After this experience with the City of London Corporation and IBM, the three co-founders initiated QRT to keep that momentum alive, turning a one-time event into a long-term association where academic talent, industrial needs, and entrepreneurial ambition can meet.
+        </p>
+      </div>
+
+      <div class="board-grid" id="boardGrid"></div>
+    </section>
+
     <section id="directory" class="directory section-shell reveal">
       <div class="section-heading">
         <p class="eyebrow">Directory</p>
-        <h2>Find people by research field, institution, or expertise.</h2>
+        <h2>Find people by family name, research field, institution, or expertise.</h2>
         <p>
-          The directory is designed to become a living map of the QRT community. Members can submit their profile through the form, then be added to the public list.
+          The directory is loaded from the public QRT data sheet and sorted alphabetically by family name. Members can submit their profile through the form, then be added to the public list.
         </p>
       </div>
 
       <div class="directory-toolbar">
         <label for="directorySearch">Search the directory</label>
-        <input id="directorySearch" type="search" placeholder="Example: quantum optics, photonics, QML, startup..." />
+        <input id="directorySearch" type="search" placeholder="Example: Abi Aad, quantum optics, photonics, QML, startup..." />
       </div>
+
+      <div class="directory-status" id="directoryStatus">Loading the public directory...</div>
 
       <div class="directory-table" role="region" aria-label="QRT member directory" tabindex="0">
         <table>
           <thead>
             <tr>
-              <th>Name</th>
+              <th>Family name</th>
+              <th>First name</th>
               <th>Keywords</th>
               <th>Institution</th>
               <th>Role</th>
@@ -122,30 +159,6 @@
       </div>
     </section>
 
-    <section id="board" class="board section-shell reveal">
-      <div class="section-heading">
-        <p class="eyebrow">Board</p>
-        <h2>Meet the team building QRT.</h2>
-        <p>
-          This section can present the founding board, academic advisors, event leads, partnership leads, and student representatives.
-        </p>
-      </div>
-
-      <div class="board-grid" id="boardGrid"></div>
-    </section>
-
-    <section id="news" class="news section-shell reveal">
-      <div class="section-heading">
-        <p class="eyebrow">News</p>
-        <h2>Updates from the QRT community.</h2>
-        <p>
-          Use this section for announcements, upcoming events, opportunities, partnerships, and short quantum-industry news items.
-        </p>
-      </div>
-
-      <div class="news-grid" id="newsGrid"></div>
-    </section>
-
     <section id="join" class="join section-shell reveal">
       <div class="join-card">
         <p class="eyebrow">Join QRT</p>
@@ -154,7 +167,7 @@
           Join the WhatsApp group to follow community updates, or submit the form to be included in the QRT directory.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://chat.whatsapp.com/DOwIi2uaRBGJnSZOlb8h3z?mode=gi_t" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
+          <a class="btn btn-primary" href="https://web.whatsapp.com/accept?code=DOwIi2uaRBGJnSZOlb8h3z" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
           <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJVQNXhUHe6TXw4nT_h5p1hFv95x8g02ppAAZJHT6TnBt4g/viewform?usp=sharing&ouid=116323556988947068439" target="_blank" rel="noopener noreferrer">Be added to the directory</a>
         </div>
       </div>
@@ -164,7 +177,7 @@
   <footer class="footer">
     <div class="section-shell footer-content">
       <a class="brand footer-brand" href="#top">
-        <img src="assets/qrt-logo.jpeg" alt="QRT logo" />
+        <img src="qrt-logo.jpeg" alt="QRT logo" />
         <span>
           <strong>Quantum Research Technologies</strong>
           <small>Where academia meets the quantum industry.</small>

@@ -359,7 +359,8 @@ h3 {
 .pillar-card,
 .board-card,
 .news-card,
-.join-card {
+.join-card,
+.history-card {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.84);
@@ -439,6 +440,25 @@ h3 {
   box-shadow: 0 0 0 4px rgba(43, 45, 155, 0.10), 0 14px 32px rgba(14, 16, 72, 0.06);
 }
 
+
+.directory-status {
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.92rem;
+}
+
+.directory-status a {
+  color: var(--blue-900);
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .directory-table {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -450,7 +470,7 @@ h3 {
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 920px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -514,6 +534,24 @@ tr:last-child td {
   color: var(--blue-900);
   box-shadow: none;
   flex: 0 0 auto;
+}
+
+
+.history-card {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 32px;
+  align-items: start;
+  padding: clamp(28px, 4vw, 44px);
+  margin-bottom: 24px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.96), rgba(236,241,255,0.94));
+}
+
+.history-card p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
 }
 
 .board-grid,
@@ -692,7 +730,8 @@ tr:last-child td {
   }
 
   .hero,
-  .mission {
+  .mission,
+  .history-card {
     grid-template-columns: 1fr;
   }
 
