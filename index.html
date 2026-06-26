@@ -1,137 +1,189 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lebanese Physics Society</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quantum Research Technologies — where academia meets the quantum industry." />
+  <title>Quantum Research Technologies</title>
+  <link rel="icon" href="qrt-logo.jpeg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="header-copy">
-        <p class="eyebrow">Lebanese Physics Society</p>
-        <h1>A network of Lebanese interested in the application of physics, quantum &amp; AI into industrial cases</h1>
-        <p class="lead">Connecting Lebanese profiles around physics-based technologies, quantum methods, artificial intelligence, and industrial applications.</p>
-        <nav class="site-nav" aria-label="Main navigation">
-          <a class="active" href="index.html">Home</a>
-          <a href="board.html">Board</a>
-          <a href="news.html">News</a>
-          <a href="offers.html">Job Offers</a>
-          <a href="directory.html">Directory</a>
-        </nav>
-        <div class="cta-row">
-          <a id="whatsappLink" class="cta primary" href="#" target="_blank" rel="noopener">Join the WhatsApp group</a>
-          <a id="memberFormLink" class="cta secondary" href="#" target="_blank" rel="noopener">Be added to the directory</a>
-        </div>
+  <header class="site-header" id="top">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Quantum Research Technologies home">
+        <img src="qrt-logo.jpeg" alt="Quantum Research Technologies logo" />
+        <span>
+          <strong>QRT</strong>
+          <small>Quantum Research Technologies</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="#news">News</a>
+        <a href="#board">Board</a>
+        <a href="#directory">Directory</a>
+        <a href="#join" class="nav-cta">Join</a>
       </div>
-      <img class="site-logo" src="Logo.png" alt="Lebanese Physics Society logo" />
-    </div>
+    </nav>
   </header>
 
-  <main class="container page-main">
-    <section class="section-intro home-intro">
-      <p class="eyebrow">Scientific orientation</p>
-      <h2>Connecting physics training to concrete industrial problems</h2>
+  <main>
+    <section class="hero section-shell">
+      <div class="hero-content reveal">
+        <p class="eyebrow">Quantum Research Technologies</p>
+        <h1>Where academia meets the quantum industry.</h1>
+        <p class="hero-text">
+          QRT connects students, researchers, engineers, founders, laboratories, startups, and companies working across quantum science and emerging quantum technologies.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://chat.whatsapp.com/DOwIi2uaRBGJnSZOlb8h3z" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
+          <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJVQNXhUHe6TXw4nT_h5p1hFv95x8g02ppAAZJHT6TnBt4g/viewform?usp=sharing&ouid=116323556988947068439" target="_blank" rel="noopener noreferrer">Be added to the directory</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal" aria-label="QRT visual identity card">
+        <div class="logo-orbit">
+          <img src="qrt-logo.jpeg" alt="QRT logo" />
+        </div>
+        <div class="hero-card-copy">
+          <span>Research · Industry · Community</span>
+          <strong>Building bridges in quantum technologies.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission section-shell reveal" aria-labelledby="mission-title">
+      <div>
+        <p class="eyebrow">Our mission</p>
+        <h2 id="mission-title">A community for the next generation of quantum builders.</h2>
+      </div>
       <p>
-        The Lebanese Physics Society aims to gather Lebanese students, researchers, engineers, and professionals around physics-based technologies, with a special focus on quantum science, photonics, artificial intelligence, modelling, sensing, and industrial innovation.
+        QRT aims to create a structured bridge between academic laboratories and the quantum industry, by making people easier to find, opportunities easier to share, and collaborations easier to start.
       </p>
     </section>
 
-    <section class="home-section" aria-label="Quantum application branches">
+    <section class="pillars section-shell" aria-label="QRT pillars">
+      <article class="pillar-card reveal">
+        <span class="card-number">01</span>
+        <h3>Connect</h3>
+        <p>Bring together students, researchers, engineers, startups, and companies active in quantum technologies.</p>
+      </article>
+      <article class="pillar-card reveal">
+        <span class="card-number">02</span>
+        <h3>Share</h3>
+        <p>Publish community news, scientific events, talks, calls for participation, and collaboration updates.</p>
+      </article>
+      <article class="pillar-card reveal">
+        <span class="card-number">03</span>
+        <h3>Build</h3>
+        <p>Encourage projects, partnerships, hackathons, and academic-industry conversations around quantum innovation.</p>
+      </article>
+    </section>
+
+    <section id="news" class="news section-shell reveal">
       <div class="section-heading">
-        <p class="eyebrow">Quantum applications</p>
-        <h2>Quantum branches and use cases</h2>
-        <p class="muted">A first map of the fields we want to connect inside the society.</p>
+        <p class="eyebrow">News</p>
+        <h2>Updates from the QRT community.</h2>
+        <p>
+          Use this section for announcements, upcoming events, partnerships, community milestones, and short quantum-technology news items.
+        </p>
       </div>
 
-      <div class="topic-grid">
-        <a class="topic-card topic-link" href="quantum-finance.html">
-          <span class="topic-tag">Quantum for finance</span>
-          <h3>Optimization, risk and market modelling</h3>
-          <p>
-            Quantum algorithms and quantum-inspired methods for portfolio optimization, Monte Carlo acceleration, risk analysis, derivative pricing, and complex financial systems.
-          </p>
-          <span class="topic-action">Open the French Qubits hackathon example →</span>
-        </a>
+      <div class="news-grid" id="newsGrid"></div>
+    </section>
 
-        <article class="topic-card">
-          <span class="topic-tag">Quantum for modelling</span>
-          <h3>Simulation of complex physical systems</h3>
-          <p>
-            Quantum simulation and numerical modelling for materials, chemistry, condensed matter, wave propagation, differential equations, and high-dimensional physical problems.
-          </p>
-        </article>
+    <section id="board" class="board section-shell reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Board</p>
+        <h2>Meet the team building QRT.</h2>
+      </div>
 
-        <article class="topic-card">
-          <span class="topic-tag">Quantum & AI</span>
-          <h3>Learning, control and physical AI</h3>
-          <p>
-            Connections between quantum physics and artificial intelligence, including quantum machine learning, AI-assisted experiments, photonic AI, inverse design, and control of quantum systems.
-          </p>
-        </article>
+      <div class="history-card">
+        <div>
+          <p class="eyebrow">History</p>
+          <h3>From a hackathon momentum to a quantum community.</h3>
+        </div>
+        <p>
+          The idea behind Quantum Research Technologies was born from the energy of the Quantum Computing Hackathon, where students, researchers, and industry actors worked around concrete quantum challenges. After this experience with the City of London Corporation and IBM, the three co-founders initiated QRT to keep that momentum alive, turning a one-time event into a long-term association where academic talent, industrial needs, and entrepreneurial ambition can meet.
+        </p>
+      </div>
 
-        <article class="topic-card">
-          <span class="topic-tag">Quantum sensing</span>
-          <h3>Metrology and environmental monitoring</h3>
-          <p>
-            Quantum and photonic sensors for time-frequency transfer, optical fiber sensing, geophysics, seismic monitoring, navigation, biomedical sensing, and industrial diagnostics.
-          </p>
-        </article>
+      <div class="board-grid" id="boardGrid"></div>
+    </section>
 
-        <article class="topic-card">
-          <span class="topic-tag">Photonics</span>
-          <h3>Integrated and industrial photonic systems</h3>
-          <p>
-            Photonic integrated circuits, lithium niobate platforms, semiconductor lasers, nonlinear optics, telecom components, and optical systems for real-world deployment.
-          </p>
-        </article>
+    <section id="directory" class="directory section-shell reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Directory</p>
+        <h2>Find people by family name, research field, institution, or expertise.</h2>
+        <p>
+          The directory is loaded from the public QRT data sheet and sorted alphabetically by family name. Members can submit their profile through the form, then be added to the public list.
+        </p>
+      </div>
 
-        <article class="topic-card">
-          <span class="topic-tag">Quantum networks</span>
-          <h3>Communication and secure infrastructure</h3>
-          <p>
-            Quantum communication, secure optical links, synchronization networks, quantum internet architectures, and the interface between telecom infrastructure and quantum technologies.
-          </p>
-        </article>
+      <div class="directory-toolbar">
+        <label for="directorySearch">Search the directory</label>
+        <input id="directorySearch" type="search" placeholder="Search by name, family name, research field, institution, or expertise..." />
+      </div>
+
+      <div class="directory-status" id="directoryStatus" hidden></div>
+
+      <div class="directory-table" role="region" aria-label="QRT member directory" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>Family name</th>
+              <th>First name</th>
+              <th>Keywords</th>
+              <th>Institution</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="directoryBody"></tbody>
+        </table>
+      </div>
+
+      <div class="join-strip">
+        <div>
+          <h3>Want to appear in the directory?</h3>
+          <p>Submit your name, research keywords, institution, and relevant links through the official form.</p>
+        </div>
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJVQNXhUHe6TXw4nT_h5p1hFv95x8g02ppAAZJHT6TnBt4g/viewform?usp=sharing&ouid=116323556988947068439" target="_blank" rel="noopener noreferrer">Be added to the directory</a>
       </div>
     </section>
 
-    <section class="home-section split-section" aria-label="Society priorities">
-      <article class="priority-card">
-        <h3>For students and young researchers</h3>
+    <section id="join" class="join section-shell reveal">
+      <div class="join-card">
+        <p class="eyebrow">Join QRT</p>
+        <h2>Become part of the quantum network.</h2>
         <p>
-          Build a Lebanese network across universities, laboratories, and companies, share opportunities, find mentors, and discover industrial paths for physics profiles.
+          Join the WhatsApp group to follow community updates, or submit the form to be included in the QRT directory.
         </p>
-      </article>
-
-      <article class="priority-card">
-        <h3>For industry and innovation</h3>
-        <p>
-          Promote physics-based expertise in quantum technologies, AI, photonics, modelling, sensing, and data-driven scientific engineering.
-        </p>
-      </article>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://chat.whatsapp.com/DOwIi2uaRBGJnSZOlb8h3z" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
+          <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxJVQNXhUHe6TXw4nT_h5p1hFv95x8g02ppAAZJHT6TnBt4g/viewform?usp=sharing&ouid=116323556988947068439" target="_blank" rel="noopener noreferrer">Be added to the directory</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="container footer">
-    <p>Per Leges Naturae ad Deum Cedrorum</p>
-    <p class="footer-links">
-      <a id="footerWhatsappLink" href="#" target="_blank" rel="noopener">WhatsApp group</a>
-      <span>·</span>
-      <a id="footerMemberFormLink" href="#" target="_blank" rel="noopener">Be added to the directory</a>
-      <span>·</span>
-      <a href="board.html">Board</a>
-      <span>·</span>
-      <a href="news.html">News</a>
-      <span>·</span>
-      <a href="offers.html">Job Offers</a>
-      <span>·</span>
-      <a href="directory.html">Directory</a>
-    </p>
+  <footer class="footer">
+    <div class="section-shell footer-content">
+      <a class="brand footer-brand" href="#top">
+        <img src="qrt-logo.jpeg" alt="QRT logo" />
+        <span>
+          <strong>Quantum Research Technologies</strong>
+          <small>Where academia meets the quantum industry.</small>
+        </span>
+      </a>
+      <p>© <span id="currentYear"></span> Quantum Research Technologies. All rights reserved.</p>
+    </div>
   </footer>
 
-  <script src="config.js"></script>
-  <script src="links.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -782,3 +782,24 @@ tr:last-child td {
     padding: 58px 0;
   }
 }
+
+[hidden] {
+  display: none !important;
+}
+
+.news-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.news-details span {
+  border: 1px solid rgba(31, 46, 111, 0.14);
+  border-radius: 999px;
+  background: rgba(31, 46, 111, 0.045);
+  color: var(--blue);
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 0.42rem 0.7rem;
+}

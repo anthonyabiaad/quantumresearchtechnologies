@@ -1,5 +1,5 @@
 const DIRECTORY_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFXYPMndMvhgX4zzXwgJRA5mqwkDrCSCPPyv7UMgVpubPmj1fGSSE8YWMqTWj4ZwEKCm0_t_Prnx-7/pub?gid=2012131818&single=true&output=csv";
-const WHATSAPP_WEB_URL = "https://web.whatsapp.com/accept?code=DOwIi2uaRBGJnSZOlb8h3z";
+const WHATSAPP_WEB_URL = "https://chat.whatsapp.com/DOwIi2uaRBGJnSZOlb8h3z";
 
 let directoryMembers = [];
 
@@ -23,22 +23,28 @@ const boardMembers = [
 
 const newsItems = [
   {
-    date: "Launching soon",
-    title: "Quantum Research Technologies is taking shape",
-    text: "QRT is being built as a community where academia meets the quantum industry, with a focus on visibility, collaboration, and opportunity sharing.",
-    link: "#join"
+    date: "September 2025",
+    title: "Legal registration of QRT",
+    text: "Quantum Research Technologies was legally registered under PSL University, giving the association a formal structure to develop its academic and industrial mission."
   },
   {
-    date: "Directory",
-    title: "A public directory for quantum profiles",
-    text: "Members can submit their family name, first name, research keywords, institution, and profile information to help the community find collaborators and expertise more easily.",
-    link: "#directory"
+    date: "4 December 2025",
+    title: "First QRT event with Google",
+    text: "QRT members were invited to the Google event “Révolution quantique, défis et perspectives technologiques”, where they had the opportunity to hear Michel Devoret and Alain Aspect, Nobel Prize-winning physicists."
   },
   {
-    date: "Community",
-    title: "Join the QRT WhatsApp group",
-    text: "The WhatsApp group is the fastest way to follow QRT community announcements and stay connected with members.",
-    link: WHATSAPP_WEB_URL
+    date: "28 April 2026",
+    title: "First quantum computing bootcamp with ColibriTD",
+    text: "QRT organized its first quantum computing bootcamp with ColibriTD at PSL Research University, open to students with a scientific and programming background — engineering, computer science, AI, and related fields — eager to learn about quantum computing for real-life applications. Your next professional opportunity might be in quantum.",
+    location: "5 rue André Mazet",
+    eventDate: "Tuesday, April 28"
+  },
+  {
+    date: "10 June 2026",
+    title: "Conference with ColibriTD on quantum methods for PDEs",
+    text: "QRT hosted a conference with the quantum company ColibriTD at PSL Research University, focused on partial differential equations for medicine, climate, finance, and defence. The event was open to anyone eager to understand the quantum field for future positions or investments.",
+    location: "3 rue Amyot, 75005 Paris",
+    eventDate: "Wednesday, June 10"
   }
 ];
 
@@ -112,6 +118,44 @@ function getCell(row, headers, acceptedNames) {
   return index >= 0 ? row[index] || "" : "";
 }
 
+function splitFullName(fullName) {
+  const cleaned = String(fullName || "").replace(/\s+/g, " ").trim();
+  if (!cleaned) return { firstName: "", familyName: "" };
+
+  if (cleaned.includes(",")) {
+    const [family, ...rest] = cleaned.split(",").map((part) => part.trim()).filter(Boolean);
+    return {
+      firstName: rest.join(" "),
+      familyName: family || ""
+    };
+  }
+
+  const parts = cleaned.split(" ").filter(Boolean);
+  if (parts.length === 1) return { firstName: parts[0], familyName: "" };
+
+  const isUpperNamePart = (part) => {
+    const letters = part.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ]/g, "");
+    return letters.length > 1 && letters === letters.toUpperCase();
+  };
+
+  let uppercaseTailStart = parts.length;
+  while (uppercaseTailStart > 0 && isUpperNamePart(parts[uppercaseTailStart - 1])) {
+    uppercaseTailStart -= 1;
+  }
+
+  if (uppercaseTailStart > 0 && uppercaseTailStart < parts.length) {
+    return {
+      firstName: parts.slice(0, uppercaseTailStart).join(" "),
+      familyName: parts.slice(uppercaseTailStart).join(" ")
+    };
+  }
+
+  return {
+    firstName: parts[0],
+    familyName: parts.slice(1).join(" ")
+  };
+}
+
 function mapDirectoryRows(rows) {
   if (rows.length < 2) return [];
 
@@ -123,9 +167,9 @@ function mapDirectoryRows(rows) {
       let firstName = getCell(row, headers, ["FIRST NAME", "First Name", "Given Name", "Forename", "Prenom", "Prénom"]);
 
       if ((!familyName || !firstName) && fullName) {
-        const parts = fullName.split(/\s+/).filter(Boolean);
-        if (!firstName) firstName = parts.slice(0, -1).join(" ") || fullName;
-        if (!familyName) familyName = parts.slice(-1).join(" ");
+        const splitName = splitFullName(fullName);
+        if (!firstName) firstName = splitName.firstName;
+        if (!familyName) familyName = splitName.familyName;
       }
 
       const keywords = getCell(row, headers, [
@@ -148,6 +192,11 @@ function mapDirectoryRows(rows) {
         "Lab",
         "Company",
         "Current institution",
+        "Current Institution",
+        "Institution / University / Company",
+        "Institution/University/Company",
+        "University / Company",
+        "University/Company",
         "Affiliation"
       ]);
 
@@ -156,6 +205,9 @@ function mapDirectoryRows(rows) {
         "Position",
         "Status",
         "Current position",
+        "Current Position",
+        "Current status",
+        "Current Status",
         "Profile",
         "Degree",
         "Level"
@@ -212,16 +264,18 @@ async function loadDirectory() {
     const rows = parseCSV(csvText);
     directoryMembers = mapDirectoryRows(rows);
 
-    if (directoryMembers.length === 0) {
-      directoryStatus.innerHTML = `No public directory entries were found yet. <a href="${DIRECTORY_CSV_URL}" target="_blank" rel="noopener noreferrer">Open the data sheet</a>.`;
-    } else {
-      directoryStatus.textContent = `${directoryMembers.length} member${directoryMembers.length > 1 ? "s" : ""} loaded and sorted alphabetically by family name.`;
+    if (directoryStatus) {
+      directoryStatus.hidden = true;
+      directoryStatus.textContent = "";
     }
 
     renderDirectory(searchInput.value);
   } catch (error) {
     directoryMembers = [];
-    directoryStatus.innerHTML = `The public directory could not be loaded automatically. <a href="${DIRECTORY_CSV_URL}" target="_blank" rel="noopener noreferrer">Open the data sheet</a>.`;
+    if (directoryStatus) {
+      directoryStatus.hidden = false;
+      directoryStatus.innerHTML = `The public directory could not be loaded automatically. <a href="${DIRECTORY_CSV_URL}" target="_blank" rel="noopener noreferrer">Open the data sheet</a>.`;
+    }
     renderDirectory(searchInput.value);
     console.error(error);
   }
@@ -250,13 +304,21 @@ function renderBoard() {
 
 function renderNews() {
   newsGrid.innerHTML = newsItems.map((item) => {
-    const isExternal = item.link.startsWith("http");
+    const isExternal = item.link && item.link.startsWith("http");
+    const details = [item.location, item.eventDate]
+      .filter(Boolean)
+      .map((detail) => `<span>${escapeHTML(detail)}</span>`)
+      .join("");
+    const detailsBlock = details ? `<div class="news-details">${details}</div>` : "";
+    const linkBlock = item.link ? `<a class="news-link" href="${escapeHTML(item.link)}" ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ""}>Read more</a>` : "";
+
     return `
       <article class="news-card">
         <span class="news-date">${escapeHTML(item.date)}</span>
         <h3>${escapeHTML(item.title)}</h3>
         <p>${escapeHTML(item.text)}</p>
-        <a class="news-link" href="${escapeHTML(item.link)}" ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ""}>Read more</a>
+        ${detailsBlock}
+        ${linkBlock}
       </article>
     `;
   }).join("");
